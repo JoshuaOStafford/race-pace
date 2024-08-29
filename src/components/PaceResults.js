@@ -7,7 +7,8 @@ import {
     TableBody,
     Table,
     Container
-  } from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import './PaceResults.css'; // Import the CSS file
 
 const PaceResults = ({minutes, seconds, isMiles}) => {
 
@@ -16,23 +17,22 @@ const PaceResults = ({minutes, seconds, isMiles}) => {
         const paceSecondsPerKM = isMiles ? paceSeconds/1.60934 : paceSeconds;
         const ratio = meters / 1000;
         return ratio*paceSecondsPerKM;
-    }
+    };
 
     const formatResult = (totalSeconds) => {
         const hours = Math.floor(totalSeconds/3600);
         const remainingSeconds = totalSeconds - hours*3600;
         let minutes = Math.floor(remainingSeconds/60);
         let sec = Math.floor(totalSeconds - hours*3600 - minutes*60);
-        if (minutes<10)
-            minutes = '0' + minutes
-        if (sec<10)
-            sec = '0' + sec
-        if (hours>0)
-            return `${hours}:${minutes}:${sec}`
+        if (minutes < 10)
+            minutes = '0' + minutes;
+        if (sec < 10)
+            sec = '0' + sec;
+        if (hours > 0)
+            return `${hours}:${minutes}:${sec}`;
         else
-            return `${minutes}:${sec}`
-        
-    }
+            return `${minutes}:${sec}`;
+    };
 
     const results = [
         {name: '400m', meters: 400, seconds: calculateSeconds(400)},
@@ -46,42 +46,28 @@ const PaceResults = ({minutes, seconds, isMiles}) => {
         {name: '15k', meters: 15000, seconds: calculateSeconds(15000)},
         {name: 'Half marathon', meters: 21098, seconds: calculateSeconds(21098)},
         {name: 'Marathon', meters: 42195, seconds: calculateSeconds(42195)}
-        
-    ]
-
-    
+    ];
 
     return (
         <Container textAlign='center'>
-
-<Table celled style={{
-                width: '30%', 
-                margin: '0 auto',
-                '@media (max-width: 768px)': {
-                    width: '100%'
-                }
-            }}>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderCell>Distance</TableHeaderCell>
-        <TableHeaderCell>Time</TableHeaderCell>
-      </TableRow>
-    </TableHeader>
-    
-    <TableBody>
-        {console.log('Rendering')}
-        {console.log(`Minutes: ${minutes}`)}
-        {console.log(`Seconds: ${seconds}`)}
-      {results.map(result => (
-        <TableRow>
-        <TableCell>{result.name}</TableCell>
-        <TableCell>{formatResult(result.seconds)}</TableCell>
-      </TableRow>
-      ))}
-     </TableBody>
-  </Table>
-  </Container>
+            <Table celled className="responsive-table">
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderCell>Distance</TableHeaderCell>
+                        <TableHeaderCell>Time</TableHeaderCell>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {results.map(result => (
+                        <TableRow key={result.name}>
+                            <TableCell>{result.name}</TableCell>
+                            <TableCell>{formatResult(result.seconds)}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </Container>
     );
-}
+};
 
 export default PaceResults;
