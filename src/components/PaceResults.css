@@ -1,40 +1,19 @@
-/* Default styling for larger screens */
-.responsive-table {
-    width: 30%;
-    margin: 0 auto;
-}
-
-/* Media query for mobile devices */
 @media (max-width: 768px) {
     .responsive-table {
         width: 100%;
+        border: 2px solid red; /* Add a border to see if the query is applied */
     }
 
-    /* Force table cells to equally divide the space on mobile */
     .responsive-table td, .responsive-table th {
-        width: 50%;  /* Ensure each column takes up half the width */
+        width: 50%;
+        border: 1px solid blue; /* Add borders to see cell boundaries */
         text-align: center;
     }
 
-    /* Adjustments specifically for mobile devices */
     .responsive-table td:before {
-        content: attr(data-label); /* Use data-label attribute for column titles */
+        content: attr(data-label); 
         font-weight: bold;
         float: left;
         text-transform: uppercase;
     }
-    
-    .responsive-table tr {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    
-    .responsive-table td {
-        display: block;
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
-        margin-bottom: 8px; /* Adds some space between rows */
-    }
-}
+}   
