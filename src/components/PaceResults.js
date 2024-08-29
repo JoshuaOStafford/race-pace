@@ -54,7 +54,13 @@ const PaceResults = ({minutes, seconds, isMiles}) => {
     return (
         <Container textAlign='center'>
 
-        <Table celled style={{width: '30%', margin: '0 auto'}}>
+<Table celled style={{
+                width: '30%', 
+                margin: '0 auto',
+                '@media (max-width: 768px)': {
+                    width: '100%'
+                }
+            }}>
     <TableHeader>
       <TableRow>
         <TableHeaderCell>Distance</TableHeaderCell>
