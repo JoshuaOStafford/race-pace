@@ -1,5 +1,6 @@
 import InputForm from './components/InputForm';
 import 'semantic-ui-css/semantic.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';  // Import the App.css file
 import React, { useEffect } from 'react';
 import { initGA, logPageView } from './analytics';
