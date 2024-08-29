@@ -60,8 +60,8 @@ const PaceResults = ({minutes, seconds, isMiles}) => {
                 <TableBody>
                     {results.map(result => (
                         <TableRow key={result.name}>
-                            <TableCell>{result.name}</TableCell>
-                            <TableCell>{formatResult(result.seconds)}</TableCell>
+                            <TableCell data-label="Distance">{result.name}</TableCell>
+                            <TableCell data-label="Time">{formatResult(result.seconds)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
